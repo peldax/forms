@@ -1,5 +1,5 @@
 {
-	"name": "nextras/forms",
+	"name": "peldax/forms",
 	"type": "library",
 	"description": "Form components for Nette Framework.",
 	"keywords": ["nette", "form"],
