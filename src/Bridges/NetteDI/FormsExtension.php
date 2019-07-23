@@ -45,8 +45,8 @@ class FormsExtension extends CompilerExtension
 		Container::extensionMethod('addTypeahead', function(Container $container, $name, $label = null, $callback = null) {
 			return $container[$name] = new Controls\Typeahead($label, $callback);
 		});
-        Container::extensionMethod('addDatePeriodicPicker', function (Container $container, $name, $label = null) {
-            return $container[$name] = new Controls\DatePeriodicPicker($label);
-        });
+		Container::extensionMethod('addDatePeriodicPicker', function (Container $container, $name, $label = null) {
+		    return $container[$name] = new Controls\DatePeriodicPicker($label);
+		});
 	}
 }

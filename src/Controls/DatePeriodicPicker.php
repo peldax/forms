@@ -15,14 +15,9 @@ use Nette\Utils\Html;
 /**
  * Form control for selecting date.
  */
-class DatePeriodicPicker extends DateTimePickerPrototype
+class DatePeriodicPicker extends DatePicker
 {
-    /** @var string */
-    protected $htmlFormat = 'Y-m-d';
-
-    /** @var string */
-    protected $htmlType = 'date';
-
+    protected CONST YEAR = 1112;
 
     protected function getDefaultParser()
     {
@@ -33,7 +28,7 @@ class DatePeriodicPicker extends DateTimePickerPrototype
 
             $dd = $matches['dd'];
             $mm = $matches['mm'];
-            $yyyy = 1112;//isset($matches['yyyy']) ? $matches['yyyy'] : date('Y');
+            $yyyy = static::YEAR;
 
             if (!checkdate($mm, $dd, $yyyy)) {
                 return null;
@@ -43,20 +38,6 @@ class DatePeriodicPicker extends DateTimePickerPrototype
                 ->setDate($yyyy, $mm, $dd)
                 ->setTime(0, 0, 0);
         };
-    }
-
-
-    /**
-     * @return DateTimeImmutable|NULL
-     */
-    public function getValue()
-    {
-        $val = parent::getValue();
-        // set midnight so the limit dates (min & max) pass the :RANGE validation rule
-        if ($val !== null) {
-            return $val->setTime(0, 0, 0);
-        }
-        return $val;
     }
 
     public function getControl(): Html
